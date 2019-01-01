@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Arrange Number</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.min.js"></script>
+        <script type="text/javascript">
+            function changeScreenSize() {
+                window.resizeTo(screen.width - 300, screen.height - 300)
+            }
+        </script>
+    </head>
+
+
+    <body onload="changeScreenSize()" style="height:  100%">
+        <div style="display: flex; height: 25%;width: 100%; text-align: center">
+            <div id="button11" onclick="select(1, 1)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">8</div>
+            <div id="button12" onclick="select(1, 2)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">10</div>
+            <div id="button13" onclick="select(1, 3)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">12</div>
+            <div id="button14" onclick="select(1, 4)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">14</div>
+        </div>
+        <div style="display: flex;  height: 25%;width: 100%; text-align: center">
+            <div id="button21" onclick="select(2, 1)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">7</div>
+            <div id="button22" onclick="select(2, 2)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">9</div>
+            <div id="button23" onclick="select(2, 3)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">11</div>
+            <div id="button24" onclick="select(2, 4)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">16</div>
+        </div>
+        <div style="display: flex; height: 25%; width: 100%; text-align: center">
+            <div id="button31" onclick="select(3, 1)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">1</div>
+            <div id="button32" onclick="select(3, 2)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">3</div>
+            <div id="button33" onclick="select(3, 3)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">5</div>
+            <div id="button34" onclick="select(3, 4)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">15</div>
+        </div>
+        <div style="display: flex; height: 25%; width: 100%; text-align: center">
+            <div id="button41" onclick="select(4, 1)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">2</div>
+            <div id="button42" onclick="select(4, 2)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">4</div>
+            <div id="button43" onclick="select(4, 3)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">6</div>
+            <div id="button44" onclick="select(4, 4)" style="height: 100%;width: 25%;padding: 1%;border: 1px solid #fff;background-color: #a2a2a2">13</div>
+        </div>
+        <script>
+            var lastParam1 = null
+            var lastParam2 = null
+            window.resizeTo(500, 500)
+            function select(param1, param2) {
+                if (lastParam1 == null && lastParam2 == null) {
+                    lastParam1 = param1
+                    lastParam2 = param2
+                    $('#button' + param1 + param2).css("background-color", "#fff")
+                } else if (lastParam1 == param1 && lastParam2 == param2) {
+                    lastParam1 = null
+                    lastParam2 = null
+                    $('#button' + param1 + param2).css("background-color", "#a2a2a2")
+                } else {
+                    var lowest1 = lastParam1
+                    var lowest2 = lastParam2
+                    var greater1 = param1
+                    var greater2 = param2
+                    if (lowest1 > greater1) {
+                        lowest1 = param1
+                        greater1 = lastParam1
+                    }
+                    if (lowest2 > greater2) {
+                        lowest2 = param2
+                        greater2 = lastParam2
+                    }
+
+                    var result1 = greater1 - lowest1
+                    var result2 = greater2 - lowest2
+
+                    if (result1 <= 1 && result2 <= 1 && result1 != result2) {
+                        var tempText1 = $('#button' + lastParam1 + lastParam2).text()
+                        var tempText2 = $('#button' + param1 + param2).text()
+                        $('#button' + lastParam1 + lastParam2).text(tempText2)
+                        $('#button' + param1 + param2).text(tempText1)
+                        $('#button' + param1 + param2).css("background-color", "#a2a2a2")
+                        $('#button' + lastParam1 + lastParam2).css("background-color", "#a2a2a2")
+                        lastParam1 = null
+                        lastParam2 = null
+                    } else {
+                        alert("Range To Far")
+                    }
+
+
+                }
+
+
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,10 @@
+Program ini di buat menggunakan html, Javascript, & Jquery.
+
+Cara Penggunaan
+1. klik nomor yang akan di pindahkan
+2. klik ke posisi yang akan di pindahkan
+
+Note:
+- Nomor yang akan di pindahkan hanya bisa ke kiri 1x / ke kanan 1x / ke atas 1x / ke bawah 1x.
+- Nomor tidak bisa di pindahkan secara diagonal atau jaraknya lebih dari 1 nomor
+- tidak ada akhir dari aplikasi ini, hanya memindahkan nomor saja
